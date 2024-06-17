@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webdev-deployment
+  namespace: biocomplexity
+  labels:
+    app: webdev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webdev
+  template:
+    metadata:
+      labels:
+        app: webdev
+    spec:
+      containers:
+      - name: webdev-container
+        image: nginx
+        ports:
+        - containerPort: 80    
+        resources:
+          requests:
+            memory: "2024Mi"
+            cpu: "50m"
+          limits:
+            memory: "3024Mi"
+            cpu: "100m"
+            
+
